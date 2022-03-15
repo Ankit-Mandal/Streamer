@@ -81,4 +81,7 @@ export const deleteStream = (id) => async (dispatch) => {
     type: DELETE_STREAM,
     payload: id,
   });
+
+  // Re-route user back to home page
+  history.push("/");
 };

@@ -11,15 +11,15 @@
       "id": 3
     },
     {
-      "description": "This change was made by a patch request",
-      "title": "My stream 2",
-      "userId": "103245285864815808594",
-      "id": 4
-    },
-    {
       "title": "Streaming Component Reuse",
       "description": "This is about refactoring some components.",
       "id": 5
+    },
+    {
+      "title": "A stream",
+      "description": "Don't know",
+      "userId": "103245285864815808594",
+      "id": 6
     }
   ]
 }
