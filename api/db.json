@@ -6,14 +6,20 @@
       "id": 1
     },
     {
-      "title": "Other Stream",
-      "description": "Here's some stream",
-      "id": 2
-    },
-    {
       "title": "Cat Stream",
       "description": "A stream about cats!",
       "id": 3
+    },
+    {
+      "description": "This change was made by a patch request",
+      "title": "My stream 2",
+      "userId": "103245285864815808594",
+      "id": 4
+    },
+    {
+      "title": "Streaming Component Reuse",
+      "description": "This is about refactoring some components.",
+      "id": 5
     }
   ]
 }

@@ -1,3 +1,5 @@
+import history from "../history";
+
 import streams from "../apis/streams";
 import {
   SIGN_IN,
@@ -22,19 +24,24 @@ export const signOut = () => {
   };
 };
 
-export const createStream = (formValues) => async (dispatch) => {
-  const response = await streams.post("/streams", formValues);
-  console.log(response.data);
+export const createStream = (formValues) => async (dispatch, getState) => {
+  const { userId } = getState().auth;
+
+  const response = await streams.post("/streams", { ...formValues, userId });
+  // console.log(response.data);
 
   dispatch({
     type: CREATE_STREAM,
     payload: response.data,
   });
+
+  // Re-route user back to home page
+  history.push("/");
 };
 
 export const fetchStreams = () => async (dispatch) => {
   const response = await streams.get("/streams");
-  console.log(response.data);
+  // console.log(response.data);
 
   dispatch({
     type: FETCH_STREAMS,
@@ -44,7 +51,7 @@ export const fetchStreams = () => async (dispatch) => {
 
 export const fetchStream = (id) => async (dispatch) => {
   const response = await streams.get(`/streams/${id}`);
-  console.log(response.data);
+  // console.log(response.data);
 
   dispatch({
     type: FETCH_STREAM,
@@ -53,13 +60,17 @@ export const fetchStream = (id) => async (dispatch) => {
 };
 
 export const editStream = (id, formValues) => async (dispatch) => {
-  const response = await streams.put(`/streams/${id}`, formValues);
-  console.log(response.data);
+  // We are using PATCH instead of PUT, as PUT request will remove the userId field from the stream
+  const response = await streams.patch(`/streams/${id}`, formValues);
+  // console.log(response.data);
 
   dispatch({
     type: EDIT_STREAM,
     payload: response.data,
   });
+
+  // Re-route user back to home page
+  history.push("/");
 };
 
 export const deleteStream = (id) => async (dispatch) => {
